@@ -17,6 +17,8 @@ function play(computer, player) {
   const computerChoice =
     typeof computer === "string" ? computer.toLowerCase() : "";
   const playerChoice = typeof player === "string" ? player.toLowerCase() : "";
+
+ 
   if (computerChoice == playerChoice) return "There's a tie!";
   switch (computerChoice) {
     case "rock":
@@ -36,28 +38,38 @@ function play(computer, player) {
   }
 }
 
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    const playerChoice = "rock";
-    for(let i =0; i<5;i++){
-        const computerChoice = getComputerChoice();
-        const result = play(computerChoice,playerChoice);
-        console.log(result);
-        if(result.includes("win")){
-            playerScore++;
-        }
-        else if( result.includes('lose')){
-            computerScore++;
-        }
-    }
-    if(playerScore == computerScore){
-        console.log("There's a tie!");
-    }else if(playerScore> computerScore){
-        console.log("You win!")
-    }else{
-        console.log("You lose!")
-    }
-}
+// function game(){
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     const playerChoice = "rock";
+//     // for(let i =0; i<5;i++){
+//     //     const computerChoice = getComputerChoice();
+//     //     const result = play(computerChoice,playerChoice);
+//     //     console.log(result);
+//     //     if(result.includes("win")){
+//     //         playerScore++;
+//     //     }
+//     //     else if( result.includes('lose')){
+//     //         computerScore++;
+//     //     }
+//     // }
 
-game();
+//     if(playerScore == computerScore){
+//         console.log("There's a tie!");
+//     }else if(playerScore> computerScore){
+//         console.log("You win!")
+//     }else{
+//         console.log("You lose!")
+//     }
+// }
+
+const div = document.querySelector('.result');
+
+const rock = document.querySelector(".Rock");
+rock.onclick = () =>  div.textContent= play(getComputerChoice(), "Rock");
+
+const paper = document.querySelector(".Paper");
+paper.onclick = () => div.textContent= play(getComputerChoice(), "Paper");
+
+const scissors = document.querySelector(".Scissors");
+scissors.onclick = () => div.textContent= play(getComputerChoice(), "scissors");
